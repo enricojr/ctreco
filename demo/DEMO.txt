@@ -1,0 +1,87 @@
+******************************************
+*******
+******* Enrico Jr. Schioppa & Michele Doni
+******* Nikhef detector R&D, April 2014
+******* 
+******************************************
+
+******* A step by step guided reconstruction
+
+******* Raw data are 64x64 pixel frames, one per angle, for angles from 0 to 180 in step of 2 degrees. These are stored in data/raw/ as frame_%d.txt files. Frames can be visualized using plotFrame.C
+
+******* Make sinograms. Output files are saved in data/sinograms/. Sinograms can be visualized using plotSinogram.C
+	- ./makeSinogram demo/config/configFile_makeSinogram.txt
+
+	with following for configFile_makeSinogram.txt:
+
+  demo/data/raw/frame_%d.txt
+  64
+  64
+  0
+  288000
+  3200
+  0
+  63
+  1
+  demo/data/sinograms/sinogram_%d.txt
+  0
+  63
+  1600
+
+******* Determining position of rotation axis. Run reconstruct_OSEM 
+	- ./reconstruct_OSEM demo/config/configFile_findAxis.txt demo/config/configFile_makeSinogram.txt
+
+	with the following configuration file followed by the makeSinogram configuration file:
+
+  demo/data/sinograms/sinogram_%d.txt
+  64
+  demo/reconstruction/OSEM/frame_%d.txt
+  10
+  demo/reconstruction/OSEM/chi2_%d.txt
+  0.01
+  0.01
+  demo/reconstruction/OSEM/findAxisChi2_%d.txt
+  30
+  demo/data/sinograms/sinogram_centeredAxis_%d.txt
+  1
+  0
+  demo/reconstruction/OSEM/offset.txt
+
+******* Reconstruction with OSEM. Compute the average shift from the offset file and then run reconstruct_OSEM
+	- ./reconstruct_OSEM demo/config/configFile_OSEM.txt demo/config/configFile_makeSinogram.txt
+
+	with the following configuration file followed by the makeSinogram configuration file:
+
+  demo/data/sinograms/sinogram_%d.txt
+  64
+  demo/reconstruction/OSEM/frame_%d.txt
+  10
+  demo/reconstruction/OSEM/chi2_%d.txt
+  0.01
+  0.01
+  demo/reconstruction/OSEM/findAxisChi2_%d.txt
+  30
+  demo/data/sinograms/sinogram_centeredAxis_%d.txt
+  0
+  -1
+  demo/reconstruction/OSEM/offset.txt
+
+******* Reconstruction with FBP. This works on the sinograms that have already been shifted by the rotation axis finding algorithm (see above)
+	- ./reconstruct_FBP demo/config/configFile_FBP.txt demo/config/configFile_makeSinogram.txt
+
+	with the following configuration file followed by the makeSinogram configuration file:
+
+  demo/data/sinograms/sinogram_centeredAxis_%d.txt
+  65
+  demo/reconstruction/FBP/frame_%d.txt
+
+******* Making png images out of reconstruction frames or raw CT scan frames. Use drawImages.C and call the pre-defined demo() function:
+	[] .L drawImages.C++
+	[] demo()
+
+	ATTENTION! Open ROOT by calling root -b
+
+******* Making a movie out of the collections of images, using avconv:
+	- avconv -f image2 -r 15 -i demo/images/FBP/frame_%03d.png -c copy -crf 20 demo/movies/FBP.mp4
+	- avconv -f image2 -r 15 -i demo/images/OSEM/frame_%03d.png -c copy -crf 20 demo/movies/OSEM.mp4
+	- avconv -f image2 -r 15 -i demo/images/CT/frame_%03d.png -c copy -crf 20 demo/movies/CT.mp4

@@ -1,0 +1,13 @@
+demo/data/raw/frame_%d.txt
+64
+64
+0
+288000
+3200
+0
+63
+1
+demo/data/sinograms/sinogram_%d.txt
+0
+63
+1600

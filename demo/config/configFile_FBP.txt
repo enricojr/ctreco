@@ -1,0 +1,3 @@
+demo/data/sinograms/sinogram_centeredAxis_%d.txt
+65
+demo/reconstruction/FBP/frame_%d.txt

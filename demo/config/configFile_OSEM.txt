@@ -1,0 +1,13 @@
+demo/data/sinograms/sinogram_%d.txt
+64
+demo/reconstruction/OSEM/frame_%d.txt
+10
+demo/reconstruction/OSEM/chi2_%d.txt
+0.01
+0.01
+demo/reconstruction/OSEM/findAxisChi2_%d.txt
+30
+demo/data/sinograms/sinogram_centeredAxis_%d.txt
+0
+-1
+demo/reconstruction/OSEM/offset.txt
