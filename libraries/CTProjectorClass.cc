@@ -36,7 +36,7 @@ int spectrumClass::readFromFile(const char *fileName){
 	/*****************/
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - spectrumClass::readFromFile(): cannot open file " << fileName << endl;
 		return -1;
 	}
@@ -64,7 +64,7 @@ void spectrumClass::readFromFile(const char *fileName, double Emax){
 	/*****************/
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - spectrumClass::readFromFile(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -93,7 +93,7 @@ void spectrumClass::readFromFile(const char *fileName, double Emin, double Emax)
 	/*****************/
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - spectrumClass::readFromFile(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -132,7 +132,7 @@ int spectrumClass::writeToFile(const char *fileName){
 	/*****************/
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - spectrumClass::writeToFile(): cannot open file " << fileName << endl;
 		return -1;
 	}
@@ -297,7 +297,7 @@ void spectrumClass::createSignalToThicknessCalibration(const char *fileName, int
 
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - spectrumClass::createSignalToThicknessCalibration(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -440,7 +440,7 @@ void projectionClass::writeToFile(const char *fileName){
 
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " -ERROR!!! - projectionClass::writeToFile(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -503,7 +503,7 @@ void OSEMsubsetClass::exportAsSinogram(const char *fileName){
 
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - OSEMsubsetClass::exportAsSinogram(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -834,7 +834,7 @@ void CTProjectorClass::writeFrameToFile(const char *fileName){
 void CTProjectorClass::writeSinogram(const char *fileName){
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::writeSinogram(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -880,7 +880,7 @@ void CTProjectorClass::importSinogram(const char *fileName, int projectionSize_)
 	////////////////////
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::importSinogram(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -907,7 +907,7 @@ void CTProjectorClass::importSinogram(const char *fileName, int projectionSize_)
 	// getting projections //
 	/////////////////////////
 	file.open(fileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::importSinogram(): cannot open file " << fileName << endl;
 		return ;
 	}
@@ -995,7 +995,7 @@ int CTProjectorClass::fixRotationAxis(const char *chi2FileName, int rotationAxis
 
 	ofstream file;
 	file.open(chi2FileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::fixRotationAxis(): cannot open file " << chi2FileName << endl;
 		return default_int;
 	}
@@ -1067,7 +1067,7 @@ int CTProjectorClass::fixRotationAxis_zeroPadding(const char *chi2FileName, int 
 
 	ofstream file;
 	file.open(chi2FileName);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::fitRotationAxis_zeroPadding(): cannot open file " << chi2FileName << endl;
 		return default_int;
 	}
@@ -1201,7 +1201,7 @@ void CTProjectorClass::signalToThicknessCalibration(const char *fileName_STT){
 	vector<double> photonCounts;
 	ifstream file;
 	file.open(fileName_STT);
-	if(file == NULL){
+	if(!file){
 		cout << " - ERROR!!! - CTProjectorClass::signalToThicknessCalibration(): cannot open file " << fileName_STT << endl;
 		return ;
 	}
@@ -1384,7 +1384,7 @@ void CTProjectorClass::OSEM(int subsetSize, const char *chi2File_name, double ch
 	///////////////////////
 	ofstream chi2File;
 	chi2File.open(chi2File_name);
-	if(chi2File == NULL){
+	if(!chi2File){
 		cout << " - ERROR!!! - CTProjectorClass::OSEM(): cannot open file " << chi2File_name<< endl;
 		return ;
 	}

@@ -94,7 +94,7 @@ void FourierClass_1D::phase(){
 void FourierClass_1D::writeIn(const char *fileName){
   ofstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - FourierClass_1D::writeIn(): cannot open file " << fileName << endl;
     return ;
   }
@@ -108,7 +108,7 @@ void FourierClass_1D::writeIn(const char *fileName){
 void FourierClass_1D::writeOut(const char *fileName){
   ofstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - FourierClass_1D::writeOut(): cannot open file " << fileName << endl;
     return ;
   }
@@ -122,7 +122,7 @@ void FourierClass_1D::writeOut(const char *fileName){
 void FourierClass_1D::writeBack(const char *fileName){
   ofstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - FourierClass_1D::writeBack(): cannot open file " << fileName << endl;
     return ;
   }
@@ -137,7 +137,7 @@ void FourierClass_1D::writeBack(const char *fileName){
 void FourierClass_1D::writeModule(const char *fileName){
   ofstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - FourierClass_1D::writeModule(): cannot open file " << fileName << endl;
     return ;
   }
@@ -151,7 +151,7 @@ void FourierClass_1D::writeModule(const char *fileName){
 void FourierClass_1D::writePhase(const char *fileName){
   ofstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - FourierClass_1D::writePhase(): cannot open file " << fileName << endl;
     return ;
   }

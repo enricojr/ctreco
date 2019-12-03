@@ -1032,7 +1032,7 @@ bool frameClass::readFromFile_ASCIIMatrix(const char* fileName){
 	}
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL) {
+	if(!file) {
 		cout << " - ERROR!!! - frameClass::readFromFile_ASCIIMatrix(): cannot open file " << fileName << endl;
 		return false;
 	}
@@ -1049,7 +1049,7 @@ void frameClass::writeToFile_ASCIIMatrix(const char* fileName) const{
 	if(!initialized) cout << " - ERROR!!! - frameClass::writeToFile_ASCIIMatrix(): frame is not yet allocated" << endl;
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL) cout << " - ERROR!!! - frameClass::writeToFile_ASCIIMatrix(): cannot open file " << fileName << endl;
+	if(!file) cout << " - ERROR!!! - frameClass::writeToFile_ASCIIMatrix(): cannot open file " << fileName << endl;
 	for(int i=0; i<_nx; i++){
 		for(int j=0; j<_ny; j++){
 			file << _frame[(j*_nx)+i] << " ";
@@ -1064,7 +1064,7 @@ void frameClass::readFromFile_ASCIITable(const char* fileName){
 	if(!initialized) cout << " - ERROR!!! - frameClass::readFromFile_ASCIITable(): frame is not yet allocated" << endl;
 	ifstream file;
 	file.open(fileName);
-	if(file == NULL) cout << " - ERROR!!! - frameClass::readFromFile_ASCIITable(): cannot open file " << fileName << endl;
+	if(!file) cout << " - ERROR!!! - frameClass::readFromFile_ASCIITable(): cannot open file " << fileName << endl;
 	set_to(0.);
 	int x = default_int;
 	int y = default_int;
@@ -1082,7 +1082,7 @@ void frameClass::writeToFile_ASCIITable(const char* fileName) const{
 	if(!initialized) cout << " - ERROR!!! - frameClass::writeToFile_ASCIITable(): frame is not yet allocated" << endl;
 	ofstream file;
 	file.open(fileName);
-	if(file == NULL) cout << " - ERROR!!! - frameClass::writeToFile_ASCIITable(): cannot open file " << fileName << endl;
+	if(!file) cout << " - ERROR!!! - frameClass::writeToFile_ASCIITable(): cannot open file " << fileName << endl;
 	for(int i=0; i<_nx; i++){
 		for(int j=0; j<_ny; j++){
 			if(_frame[(j*_nx)+i] == 0.) continue;
@@ -1097,7 +1097,7 @@ void frameClass::readFromFile_binaryTable(const char* fileName){
 	if(!initialized) cout << " - ERROR!!! - frameClass::readFromFile_binaryTable(): frame is not yet allocated" << endl;
 	ifstream file;
 	file.open(fileName, ios::in | ios::binary);
-	if(file == NULL) cout << " - ERROR!!! - frameClass::readFromFile_binaryTable(): cannot open file " << fileName << endl;
+	if(!file) cout << " - ERROR!!! - frameClass::readFromFile_binaryTable(): cannot open file " << fileName << endl;
 	while(!file.eof()){
 		int dumb = -1;
 		int x1 = file.get();

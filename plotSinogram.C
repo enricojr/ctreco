@@ -27,7 +27,7 @@ void plotSinogram(const char *fileName, int size, double max=-1){
   ////////////////////
   ifstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - plotSinogram(): cannot open file " << fileName << endl;
     return ;
   }
@@ -54,7 +54,7 @@ void plotSinogram(const char *fileName, int size, double max=-1){
   // getting projections //
   /////////////////////////
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - plotSinogram(): cannot open file " << fileName << endl;
     return ;
   }
@@ -106,7 +106,7 @@ void plotProjectionFromSinogram(const char *fileName, int size, int projectionIn
   ////////////////////
   ifstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - plotProjectionFromSinogram(): cannot open file " << fileName << endl;
     return ;
   }
@@ -138,7 +138,7 @@ void plotProjectionFromSinogram(const char *fileName, int size, int projectionIn
   // getting projections //
   /////////////////////////
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - plotProjectionFromSinogram(): cannot open file " << fileName << endl;
     return ;
   }
@@ -186,7 +186,7 @@ void plotProjectionFromFile(const char *fileName){
   /////////////////////
   ifstream file;
   file.open(fileName);
-  if(file == NULL){
+  if(!file){
     cout << " - ERROR!!! - plotProjectionFromFile(): cannot open file " << fileName << endl;
     return ;
   }

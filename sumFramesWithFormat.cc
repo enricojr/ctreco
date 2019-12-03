@@ -66,7 +66,7 @@ void readConfigurationFile(char *configurationFileName, string &fileNameFormat, 
 
   ifstream configurationFile;
   configurationFile.open(configurationFileName);
-  if(configurationFile == NULL){
+  if(!configurationFile){
     cout << " - ERROR!!! - readConfigurationFile(): cannot open configuration file " << configurationFileName << endl;
     return ;
   }

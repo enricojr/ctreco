@@ -55,7 +55,7 @@ void readConfigurationFile(char *configurationFileName, string &fileNameFormat, 
 
   ifstream configurationFile;
   configurationFile.open(configurationFileName);
-  if(configurationFile == NULL){
+  if(!configurationFile){
     cout << " - ERROR!!! - readConfigurationFile(): cannot open configuration file " << configurationFileName << endl;
     return ;
   }
@@ -86,7 +86,7 @@ void readConfigurationFile(char *configurationFileName, string &fileNameFormat, 
 
   ifstream configurationFile2; // this is the makeSinogram configuration file
   configurationFile2.open(configurationFileName2);
-  if(configurationFile2 == NULL){
+  if(!configurationFile2){
     cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName2 << endl;
     return ;
   }

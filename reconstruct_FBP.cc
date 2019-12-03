@@ -167,7 +167,7 @@ void getParameters(const char *configurationFileName, string &sinogramFileNameFo
 
 	ifstream configurationFile2; // this is the makeSinogram configuration file
 	configurationFile2.open(configurationFileName2);
-	if(configurationFile2 == NULL){
+	if(!configurationFile2){
 		cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName2 << endl;
 		return ;
 	}
@@ -191,7 +191,7 @@ void getParameters(const char *configurationFileName, string &sinogramFileNameFo
 
 	ifstream configurationFile; // this is the FBP reconstruction configuration file
 	configurationFile.open(configurationFileName);
-	if(configurationFile == NULL){
+	if(!configurationFile){
 		cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName << endl;
 		return ;
 	}

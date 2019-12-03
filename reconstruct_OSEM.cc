@@ -114,7 +114,7 @@ int main(int argc, char *argv[]){
 	if(searchAxis) {
 
 		ofstream offsetFile(offsetFileName.c_str());
-		if(offsetFile == NULL){
+		if(!offsetFile){
 			cout << " - ERROR!!! - cannot open file " << offsetFileName << endl;
 			return 1;
 		}
@@ -222,7 +222,7 @@ void getParameters(const char *configurationFileName, string &sinogramFileNameFo
 	// reading makeSinogram configuration file
 	ifstream configurationFile2;
 	configurationFile2.open(configurationFileName2);
-	if(configurationFile2 == NULL){
+	if(!configurationFile2){
 		cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName2 << endl;
 		return ;
 	}
@@ -246,7 +246,7 @@ void getParameters(const char *configurationFileName, string &sinogramFileNameFo
 	// reading reconstruct_OSEM configuration file
 	ifstream configurationFile;
 	configurationFile.open(configurationFileName);
-	if(configurationFile == NULL){
+	if(!configurationFile){
 		cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName << endl;
 		return ;
 	}

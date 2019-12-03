@@ -96,7 +96,7 @@ void readConfigurationFile(char *configurationFileName, string &fileNameFormat, 
 
 	ifstream configurationFile;
 	configurationFile.open(configurationFileName);
-	if(configurationFile == NULL){
+	if(!configurationFile){
 		cout << " - ERROR!!! - readConfigurationFile(): cannot open configuration file " << configurationFileName << endl;
 		return ;
 	}
@@ -140,7 +140,7 @@ bool OBFileOK(string fileName, int nx, int ny){
 
 	ifstream file;
 	file.open(fileName.c_str());
-	if(file == NULL)  {
+	if(!file)  {
 		cout << " - ERROR!!! - cannot open file " << fileName << endl;
 		return false;
 	}

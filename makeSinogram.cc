@@ -94,7 +94,7 @@ void getParameters(const char *configurationFileName, string &fileNameFormat, in
 
   ifstream configurationFile;
   configurationFile.open(configurationFileName);
-  if(configurationFile == NULL){
+  if(!configurationFile){
     cout << " - ERROR!!! - getParameters(): cannot open file " << configurationFileName << endl;
     return ;
   }
