@@ -14,9 +14,10 @@ void applyStyle(){
   gStyle -> SetPadRightMargin(0.2);
   gStyle -> SetPadBottomMargin(0.16);
   gStyle -> SetPadLeftMargin(0.16);
-  gStyle -> SetPalette(51);
+  gStyle -> SetPalette(55);
   gStyle -> SetOptStat(0);
   gStyle -> SetOptFit(1111);
+  gStyle -> SetNumberContours(255);
   return ;
 }
 

@@ -78,6 +78,8 @@ int main(int argc, char *argv[]){
 	// Check that I have enough offsets for all the slices
 	if ( endSlice > (int)offsets.size()-1 ) {
 		cout << "\t- [ERR ] the indexes don't quite match.  Check the startSlice, endSlice parameters.  Giving up." << endl;
+		cout << endSlice << endl;
+		cout << (int)offsets.size()-1 << endl;
 		return 0;
 	}
 	// Now reconstruct
@@ -91,6 +93,10 @@ int main(int argc, char *argv[]){
 		// Fetch the offset
 		int offset = offsets[selectedSlice];
 		// check the index is right
+		// cout << sinogramFileName << endl;
+		// cout << reconstructionFileName << endl;
+		// cout << projectionSize << endl;
+		// cout << offset << endl;
 		reconstruct(sinogramFileName, projectionSize, reconstructionFileName, offset);
 	}
 
@@ -233,7 +239,7 @@ void reconstruct(string sinogramFileName, int projectionSize, string reconstruct
 	/////////////////
 	// running FBP //
 	/////////////////
-	projectionSize = 512;
+  //	projectionSize = 512;
 	cout << " - reconstruct(): reconstructing sinogram " << sinogramFileName << endl;
 	frameClass *frame = new frameClass(projectionSize, projectionSize);
 	frame -> set_to(0.);
